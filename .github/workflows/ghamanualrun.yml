@@ -29,11 +29,16 @@ jobs:
            -w /python
            python_docker python3 -B -m pycodestyle --max-line-length=160 python
 
-       - name: Python Lint
+       #- name: Python exec
+       #  run: >-
+       #    docker run
+       #    -v $(pwd):/python
+       #    -w /python
+       #    python_docker python3 python/helloworld.py
+
+       - name: Python exec
          run: >-
            docker run
            -v $(pwd):/python
            -w /python
-           python_docker python3 python/helloworld.py
-
-
+           python_docker bash -c "pwd; ls ; ls /"
