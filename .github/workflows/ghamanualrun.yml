@@ -1,7 +1,7 @@
 name: Run GHA manually
 
 on: 
-  push:
+  #push:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -28,3 +28,10 @@ jobs:
            -v $(pwd):/python
            -w /python
            python_docker python3 -B -m pycodestyle --max-line-length=160 /python
+
+       - name: Python Lint
+         run: >-
+           docker run
+           -v $(pwd):/python
+           -w /python
+           python_docker python3 /python/helloworld.py
