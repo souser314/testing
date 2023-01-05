@@ -34,4 +34,7 @@ jobs:
            docker run
            -v $(pwd):/python
            -w /python
-           python_docker python3 /python/helloworld.py
+           #python_docker python3 /python/helloworld.py
+           python_docker ls -la
+
+
