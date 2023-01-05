@@ -27,7 +27,7 @@ jobs:
            docker run
            -v $(pwd):/python
            -w /python
-           python_docker python3 -B -m pycodestyle --max-line-length=160 /python
+           python_docker python3 -B -m pycodestyle --max-line-length=160 python
 
        - name: Python Lint
          run: >-
