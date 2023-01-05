@@ -25,8 +25,8 @@ jobs:
        - name: Python Lint
          run: >-
            docker run
-           -v $(pwd):/python
-           -w /python
+           -v $(pwd):/work
+           -w /work
            python_docker python3 -B -m pycodestyle --max-line-length=160 python
 
        #- name: Python exec
@@ -39,6 +39,6 @@ jobs:
        - name: Python exec
          run: >-
            docker run
-           -v $(pwd):/python
-           -w /python
-           python_docker bash -c "pwd; ls ; ls /"
+           -v $(pwd):/work
+           -w /work
+           python_docker bash -c "echo -e 'running pwd: '; pwd; echo -e 'running ls now:  '; ls ; echo -e 'running ls root now: '; ls /"
