@@ -1,0 +1,37 @@
+name: Run GHA manually
+
+on: 
+  #push:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job for now. Will separate out into multiple jobs when we begin working with a registry
+  build:
+    # The type of runner that the job will run on
+    runs-on:
+      - ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+       - name: Github checkout
+         uses: actions/checkout@v2
+       
+       - name: Build Docker image
+         run: docker build -t python_docker ./docker
+      
+       - name: Python Lint
+         run: >-
+           docker run
+           -v $(pwd):/python
+           -w /python
+           python_docker python3 -B -m pycodestyle --max-line-length=160 /python
+
+       - name: Python Lint
+         run: >-
+           docker run
+           -v $(pwd):/python
+           -w /python
+           python_docker python3 /python/helloworld.py
