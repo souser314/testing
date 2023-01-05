@@ -1,2 +1,3 @@
-print('one'); print('two')
+print('one')
+print('two')
 print("Hello world\n")
